@@ -15,33 +15,56 @@ public class PlayerMovement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		DealWithMovement ();
+		DealWithInput ();
 		
 	}
 
-	void DealWithMovement() {
+	void DealWithInput() {
+
 
 		if (Input.GetKeyDown (KeyCode.UpArrow) || Input.GetKeyDown (KeyCode.W)) {
 
-			transform.Translate (0, cellSize, 0);
+			if (Master.me.CheckMovementCard ()) {
+				transform.Translate (0, cellSize, 0);
+			}
+
 
 		}
 
 		if (Input.GetKeyDown (KeyCode.DownArrow) || Input.GetKeyDown (KeyCode.S)) {
 
-			transform.Translate (0, -cellSize, 0);
+			if (Master.me.CheckMovementCard ()) {
+				transform.Translate (0, -cellSize, 0);
+			}
 
 		}
 
 		if (Input.GetKeyDown (KeyCode.RightArrow) || Input.GetKeyDown (KeyCode.D)) {
 
-			transform.Translate (cellSize, 0, 0);
+			if (Master.me.CheckMovementCard ()) {
+				transform.Translate (cellSize, 0, 0);
+			}
 
 		}
 
 		if (Input.GetKeyDown (KeyCode.LeftArrow) || Input.GetKeyDown (KeyCode.A)) {
 
-			transform.Translate (-cellSize, 0, 0);
+			if (Master.me.CheckMovementCard ()) {
+				transform.Translate (-cellSize, 0, 0);
+			}
+
+		}
+			
+
+		if (Input.GetKeyDown (KeyCode.E)) {
+
+			Master.me.DrawCard ();
+
+		}
+
+		if (Input.anyKeyDown) {
+
+			Master.me.RevealSpaces ();
 
 		}
 	}

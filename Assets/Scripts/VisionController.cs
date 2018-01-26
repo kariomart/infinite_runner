@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DeckController : MonoBehaviour {
+public class VisionController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
@@ -14,13 +14,8 @@ public class DeckController : MonoBehaviour {
 		
 	}
 
+	void OnTriggerEnter2D(Collider2D coll) {
 
-	void OnMouseDown() {
-
-		Debug.Log ("deck clicked!");
-
-			Master.me.DrawCard ();
 
 	}
-
 }

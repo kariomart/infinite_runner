@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DeckController : MonoBehaviour {
+public class CardTile : TileController {
+
+	public GameObject card;
 
 	// Use this for initialization
 	void Start () {
@@ -14,13 +16,9 @@ public class DeckController : MonoBehaviour {
 		
 	}
 
+	public override void TileEntered() {
 
-	void OnMouseDown() {
 
-		Debug.Log ("deck clicked!");
-
-			Master.me.DrawCard ();
 
 	}
-
 }

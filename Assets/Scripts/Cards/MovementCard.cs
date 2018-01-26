@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveCard : Card {
+public class MovementCard : Card {
 
 
 	// Use this for initialization

@@ -5,8 +5,10 @@ using UnityEngine;
 public class MapGenerator : MonoBehaviour {
 
 	public GameObject baseTile;
+	public GameObject moveTile;
 	public int mapWidth;
 	public int mapHeight;
+
 
 	// Use this for initialization
 	void Start () {
@@ -23,23 +25,36 @@ public class MapGenerator : MonoBehaviour {
 	void GenerateMap() {
 
 		GameObject map = new GameObject ("Map");
+		Master.me.map = new TileController[mapWidth, mapHeight];
 
 		for (int x = 0; x < mapWidth; x++) {
 			for (int y = 0; y < mapHeight; y++) {
 
-				DecideWhatToSpawn ();
-				GameObject tempTile = Instantiate (baseTile, new Vector3 (x, y, 0), Quaternion.identity);
+				GameObject tile = DecideWhatToSpawn ();
+				GameObject tempTile = Instantiate (tile, new Vector3 (x, y, 0), Quaternion.identity);
 				tempTile.transform.parent = map.transform;
 				tempTile.GetComponentInChildren<SpriteRenderer> ().sortingOrder = -1;
 				Master.me.tiles.Add (tempTile);
+				Master.me.map[x, y] = tempTile.GetComponent<TileController> ();
+				Master.me.tileControllers.Add (tempTile.GetComponent<TileController> ());
 
 			}
 		}
 
 	}
 
-	void DecideWhatToSpawn() {
+	GameObject DecideWhatToSpawn() {
 
+		int rand = Random.Range (0, 100);
+
+		if (rand <= 80) {
+
+			return baseTile;
+
+		} else {
+
+			return moveTile;
+		}
 
 
 	}
