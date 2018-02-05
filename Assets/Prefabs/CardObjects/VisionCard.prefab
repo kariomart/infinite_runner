@@ -21,11 +21,11 @@ GameObject:
   - component: {fileID: 4614628462822854}
   - component: {fileID: 212915537304002232}
   - component: {fileID: 61834533626045870}
-  - component: {fileID: 114266026078608556}
-  - component: {fileID: 114501308889348596}
+  - component: {fileID: 114723064533446088}
+  - component: {fileID: 114095933535966540}
   m_Layer: 0
-  m_Name: MovementCard
-  m_TagString: MovementCard
+  m_Name: VisionCard
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -37,8 +37,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1644953692085174}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0029996037, y: 0.003028452, z: 1}
-  m_LocalScale: {x: 1, y: 1, z: 0.9950827}
+  m_LocalPosition: {x: -0.021197662, y: 0.0028599985, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -68,7 +68,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.68, y: 0.98}
   m_EdgeRadius: 0
---- !u!114 &114266026078608556
+--- !u!114 &114095933535966540
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -76,11 +76,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1644953692085174}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8fcf5900ebea45b29ef5dc348ef6fa2, type: 3}
+  m_Script: {fileID: 11500000, guid: 96cdc0d610cfa4ba885eb0fd093f4faa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cardName: 
---- !u!114 &114501308889348596
+--- !u!114 &114723064533446088
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -123,7 +123,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 366ccec7013d94e4686ed11bb80f76cc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4252937d9f3e0422c87fbd39391c184a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

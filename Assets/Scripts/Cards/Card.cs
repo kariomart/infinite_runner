@@ -15,4 +15,10 @@ public class Card : MonoBehaviour {
 	void Update () {
 		
 	}
+
+	public virtual void Played() {
+
+
+
+	}
 }

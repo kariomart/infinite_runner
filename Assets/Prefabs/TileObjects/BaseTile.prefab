@@ -37,6 +37,7 @@ GameObject:
   - component: {fileID: 4034374718117696}
   - component: {fileID: 114031134896945426}
   - component: {fileID: 61662384185320246}
+  - component: {fileID: 114994781838381372}
   m_Layer: 0
   m_Name: BaseTile
   m_TagString: Untagged
@@ -59,7 +60,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4034374718117696
 Transform:
   m_ObjectHideFlags: 1
@@ -139,6 +140,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cover: {fileID: 212020520042640728}
   pos: {x: 0, y: 0}
+  card: {fileID: 0}
+--- !u!114 &114994781838381372
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1455260926193014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99cd8e3c678544ffa91b234792efee49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212020520042640728
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -172,7 +185,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: a39b786e731ec4ccd8c5c1d47baed00e, type: 3}
-  m_Color: {r: 0.8235294, g: 0.8235294, b: 0.8235294, a: 1}
+  m_Color: {r: 0.30980393, g: 0.30588236, b: 0.30980393, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

@@ -14,9 +14,12 @@ public class MovementCard : Card {
 	void Update () {
 		
 	}
+		
 
-	public void Played() {
+	public override void Played() {
 
+		PlayerMovement.me.moves++;
+		Master.me.DiscardCard (this);
 
 
 	}

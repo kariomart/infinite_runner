@@ -37,9 +37,9 @@ GameObject:
   - component: {fileID: 4635317808367792}
   - component: {fileID: 114432280564793082}
   - component: {fileID: 61781416410183094}
-  - component: {fileID: 114609651324352332}
+  - component: {fileID: 114506053387025096}
   m_Layer: 0
-  m_Name: MoveTile
+  m_Name: GoldTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -140,8 +140,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cover: {fileID: 212721721705707202}
   pos: {x: 0, y: 0}
-  card: {fileID: 1644953692085174, guid: 14f76b255b804404dbc30a222817446d, type: 2}
---- !u!114 &114609651324352332
+  card: {fileID: 1644953692085174, guid: 17fcfb0924a98476f851369fd7dde1ff, type: 2}
+--- !u!114 &114506053387025096
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -184,7 +184,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 5c456346d16f741e5afb9d63cc22f177, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f3e4117d7b278453abd66f57f314e14b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

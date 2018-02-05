@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CardTile : TileController {
+public class GoldCard : Card {
 
-	public GameObject card;
 
 	// Use this for initialization
 	void Start () {
@@ -16,4 +15,11 @@ public class CardTile : TileController {
 		
 	}
 		
+
+	public override void Played() {
+
+		PlayerMovement.me.gold++;
+		Master.me.DiscardCard (this);
+
+	}
 }
