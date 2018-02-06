@@ -11,6 +11,7 @@ public class Master : MonoBehaviour {
 	public List<TileController> tileControllers = new List<TileController> ();
 	public List<GameObject> deck = new List<GameObject> ();
 	public List<GameObject> hand = new List<GameObject>();
+	public List <GameObject> discard = new List<GameObject> ();
 	public List<GameObject> cards = new List<GameObject>();
 	public TileController[,] map;
 	public TileController selectedTile;
@@ -18,6 +19,7 @@ public class Master : MonoBehaviour {
 
 	public GameObject handParent;
 	public GameObject deckParent;
+	public GameObject discardParent;
 
 	public GameObject handStart;
 	public float handOffset;
@@ -159,6 +161,10 @@ public class Master : MonoBehaviour {
 
 		}
 
+
+	}
+
+	public void EndTurn() {
 
 	}
 		
