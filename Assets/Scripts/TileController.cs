@@ -5,21 +5,27 @@ using UnityEngine;
 public class TileController : MonoBehaviour {
 
 	public SpriteRenderer cover;
+	public TileDisplay display;
 	public Vector2 pos;
 	public GameObject card;
-
-	SpriteRenderer sprite;
+	public SpriteRenderer sprite;
 
 	// Use this for initialization
 	void Start () {
 
 		pos = (Vector2) (transform.position);
 		sprite = GetComponent<SpriteRenderer> ();
-
+		//cover = GetComponent<SpriteRenderer> ();
+		display = GetComponent<TileDisplay> ();
+	
 	}
 	
 	// Update is called once per frame
 	void Update () {
+
+		if (Master.me.selectedTile != this) {
+			cover.color = display.coverColor;
+		}
 		
 	}
 

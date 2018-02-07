@@ -6,11 +6,15 @@ public class MapGenerator : MonoBehaviour {
 
 	public static MapGenerator me;
 	public GameObject baseTile;
+	public GameObject wallTile;
 	public GameObject moveTile;
 	public GameObject goldTile;
+
 	public int mapWidth;
 	public int mapHeight;
+	public int totalHeight;
 	public GameObject map;
+	public GameObject enemy;
 
 	int offset = 1;
 	//public int mapsGenerated;
@@ -60,6 +64,8 @@ public class MapGenerator : MonoBehaviour {
 			}
 		}
 
+		totalHeight += mapHeight;
+			
 	}
 
 	public void CheckPlayer() {
@@ -73,6 +79,28 @@ public class MapGenerator : MonoBehaviour {
 
 		GetTile (PlayerMovement.me.pos).TileEntered ();
 		RevealTiles ();
+
+	}
+
+	public bool CheckTile(Vector2 pos) {
+
+//		Debug.Log (pos);
+
+		if (GetTile (pos).gameObject.tag == "Wall") {
+			return false;
+		}
+
+		foreach (EnemyController e in Master.me.enemies) {
+
+			if (pos == e.pos) {
+
+				return false;
+
+			}
+
+		}
+	
+		return true;
 
 	}
 
@@ -107,25 +135,33 @@ public class MapGenerator : MonoBehaviour {
 	}
 
 	GameObject DecideWhatToSpawn() {
+		float r = Random.value;
 
-		int rand = Random.Range (0, 1000);
-
-		if (rand <= 800) {
-
-			return baseTile;
-
-		} else if (rand <= 900) {
-
-			return moveTile;
-		} else if (rand <= 1000) {
-
-			return goldTile;
+		if (r > .8f) {
+			return wallTile;
 		} else {
 
-			return baseTile;
 
+			int rand = Random.Range (0, 1000);
+
+			if (rand <= 800) {
+
+				return baseTile;
+
+			} else if (rand <= 900) {
+
+				return moveTile;
+			} else if (rand <= 1000) {
+
+				return goldTile;
+			} else {
+
+				return baseTile;
+
+			}
 		}
 
 
 	}
+
 }

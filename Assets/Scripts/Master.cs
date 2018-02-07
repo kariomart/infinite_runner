@@ -58,7 +58,11 @@ public class Master : MonoBehaviour {
 		}
 
 		UpdateInfoDisplay ();
-		
+
+
+		if (Input.GetKeyDown (KeyCode.Escape)) {
+			UnityEngine.SceneManagement.SceneManager.LoadScene ("main");
+		}
 	}
 
 	public void DrawCard() {
@@ -98,21 +102,36 @@ public class Master : MonoBehaviour {
 			return true;
 		}
 
+		for (int i = 0; i < hand.Count; i++) {
+			GameObject currentCard = hand [i];
+
+			if (currentCard.tag == "MovementCard") {
+
+				return true;
+			}
+		}
+
+
+
+		return false;
+	}
+
+	public void DiscardMovementCard() {
+
 		for(int i = 0; i < hand.Count; i ++) {
 			GameObject currentCard = hand [i];
 
 			if (currentCard.tag == "MovementCard") {
 
 				DiscardCard (i);
-				return true;
-
+				break;
 
 			}
 
 		}
 
-		return false;
 	}
+		
 		
 
 	public void AddCard (GameObject card) {
@@ -175,6 +194,16 @@ public class Master : MonoBehaviour {
 		UpdateLists ();
 	}
 
+	public void DeselectCards() {
+
+		foreach (GameObject c in hand) {
+
+			c.GetComponent<Card> ().isSelected = false;
+		}
+			
+
+	}
+
 	public void EndTurn() {
 
 		HandToDiscard ();
@@ -186,16 +215,37 @@ public class Master : MonoBehaviour {
 			DrawHand ();
 		}
 
-
+		SpawnEnemies ();
 		UpdateLists ();
 		UpdateCardPositions ();
 		MoveEnemies ();
 		PlayerMovement.me.energy = maxEnergy;
 	}
 
+	void SpawnEnemies() {
+
+		Debug.Log ("TRYING TO SPAWN");
+
+		for (int x = 0; x < MapGenerator.me.mapWidth; x++) {
+			for (int y = 3 + ((int)(PlayerMovement.me.pos.y) - 3); y < MapGenerator.me.totalHeight; y++) {
+
+				float rand = Random.value;
+//				Debug.Log (rand);
+				if (rand >= .995f && MapGenerator.me.CheckTile(new Vector2(x, y))) {
+					Instantiate (MapGenerator.me.enemy, new Vector2 (x, y), Quaternion.identity);
+
+				}
+			}
+		}
+
+		GetEnemies ();
+			
+	}
+
 	void GetEnemies() {
 
 		GameObject[] objs = GameObject.FindGameObjectsWithTag ("Enemy");
+		enemies.Clear ();
 		foreach (GameObject o in objs) {
 			enemies.Add (o.GetComponent<EnemyController>());
 		}
@@ -209,6 +259,23 @@ public class Master : MonoBehaviour {
 		}
 	}
 
+	public EnemyController CheckEnemies(Vector2 pos) {
+
+		foreach (EnemyController e in enemies) {
+
+//			Debug.Log (e.pos + " " + pos);
+//			Debug.Log (e.pos==pos);
+
+			if (e.pos == pos) {
+				return e;
+			} 
+				
+		}
+
+		return null;
+
+	}
+
 	void UpdateCardPositions() {
 
 		for (int i = 0; i < hand.Count; i ++) {
@@ -216,6 +283,7 @@ public class Master : MonoBehaviour {
 		}
 
 	}
+
 
 	void UpdateInfoDisplay() {
 

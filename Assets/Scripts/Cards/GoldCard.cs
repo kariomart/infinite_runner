@@ -14,9 +14,12 @@ public class GoldCard : Card {
 	void Update () {
 		
 	}
+
+
 		
 
 	public override void Played() {
+
 
 		PlayerMovement.me.gold++;
 		Master.me.DiscardCard (this);

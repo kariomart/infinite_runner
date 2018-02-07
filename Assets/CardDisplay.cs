@@ -34,8 +34,8 @@ public class CardDisplay : MonoBehaviour {
 
 		Debug.Log ("card clicked");
 		if (PlayerMovement.me.energy > 0) {
+			card.Selected ();
 			card.Played ();
-			PlayerMovement.me.energy--;
 		}
 
 	}

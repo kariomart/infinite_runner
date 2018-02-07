@@ -5,8 +5,8 @@ using UnityEngine;
 public class TileDisplay : MonoBehaviour {
 
 	TileController tile;
-	SpriteRenderer cover;
-	Color coverColor;
+	public SpriteRenderer cover;
+	public Color coverColor;
 
 	// Use this for initialization
 	void Start () {
@@ -24,21 +24,25 @@ public class TileDisplay : MonoBehaviour {
 	void OnMouseDown() {
 
 		Debug.Log ("tile at position " + tile.pos + " clicked.");
-		//cover.color = Color.black;
+
+		if (Master.me.selectedTile != null) {
+			Master.me.selectedTile.GetComponent<TileDisplay> ().cover.color = coverColor;
+		}
+		cover.color = Color.black;
 		tile.Clicked ();
 
 	}
 
 	void OnMouseOver() {
 
-			cover.color = Color.white;
+		//cover.color = Color.white;
 
 	}
 
 
 	void OnMouseExit() {
 
-			cover.color = coverColor;
+		//cover.color = coverColor;
 
 	}
 }

@@ -9,6 +9,7 @@ TagManager:
   - GoldCard
   - VisionCard
   - Enemy
+  - Wall
   layers:
   - Default
   - TransparentFX

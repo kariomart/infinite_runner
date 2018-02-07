@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Card : MonoBehaviour {
 
+	public bool isSelected;
 	public string cardName; 
 	public int energy = 1;
 
@@ -17,9 +18,18 @@ public class Card : MonoBehaviour {
 		
 	}
 
+	public void Selected() {
+		
+		Master.me.DeselectCards ();
+		isSelected = true;
+		Debug.Log (gameObject.name + "was selected");
+		//Master.me.selectedTile = null;
+	}
+
 	public virtual void Played() {
 
-
+		isSelected = false;
 
 	}
+		
 }

@@ -40,26 +40,17 @@ public class PlayerMovement : MonoBehaviour {
 	void DealWithInput() {
 
 
-		// 
-
-		// if key = UpArrow  or Key = W
-		//       # handle normal keys
-//		if key = down: 
-//			new_tile = board.below(current_ti
-//		else if key = up: 
-//			new_tile = board.above(current_ti
-//		    player.move(new_tile)
-//			unity.display_update(...)
-//
-//
-
 		if (Input.GetKeyDown (KeyCode.UpArrow) || Input.GetKeyDown (KeyCode.W)) {
 
 			if (Master.me.CheckMovementCard () && energy > 0) {
-				transform.Translate (0, cellSize, 0);
-				pos = (Vector2)transform.position;
-				MapGenerator.me.CheckPlayer ();
-				energy--;
+
+				if (MapGenerator.me.CheckTile (new Vector2 (pos.x, pos.y + 1))) {
+					transform.Translate (0, cellSize, 0);
+					pos = (Vector2)transform.position;
+					MapGenerator.me.CheckPlayer ();
+					Master.me.DiscardMovementCard ();
+					energy--;
+				}
 			}
 
 
@@ -68,11 +59,14 @@ public class PlayerMovement : MonoBehaviour {
 		if (Input.GetKeyDown (KeyCode.DownArrow) || Input.GetKeyDown (KeyCode.S)) {
 
 			if (Master.me.CheckMovementCard () && energy > 0) {
-				transform.Translate (0, -cellSize, 1);
-				pos = (Vector2)transform.position;
-				MapGenerator.me.CheckPlayer ();
-				energy--;
-				//Debug.Log (pos.y % 4);
+				
+				if (MapGenerator.me.CheckTile (new Vector2 (pos.x, pos.y - 1))) {
+					transform.Translate (0, -cellSize, 0);
+					pos = (Vector2)transform.position;
+					MapGenerator.me.CheckPlayer ();
+					Master.me.DiscardMovementCard ();
+					energy--;
+				}
 			}
 
 		}
@@ -80,10 +74,14 @@ public class PlayerMovement : MonoBehaviour {
 		if (Input.GetKeyDown (KeyCode.RightArrow) || Input.GetKeyDown (KeyCode.D)) {
 
 			if (Master.me.CheckMovementCard () && energy > 0) {
-				transform.Translate (cellSize, 0, 0);
-				pos = (Vector2)transform.position;
-				MapGenerator.me.CheckPlayer ();
-				energy--;
+				
+				if (MapGenerator.me.CheckTile (new Vector2 (pos.x + 1, pos.y))) {
+					transform.Translate (cellSize, 0, 0);
+					pos = (Vector2)transform.position;
+					MapGenerator.me.CheckPlayer ();
+					Master.me.DiscardMovementCard ();
+					energy--;
+				}
 			}
 
 		}
@@ -91,12 +89,15 @@ public class PlayerMovement : MonoBehaviour {
 		if (Input.GetKeyDown (KeyCode.LeftArrow) || Input.GetKeyDown (KeyCode.A)) {
 
 			if (Master.me.CheckMovementCard () && energy > 0) {
-				transform.Translate (-cellSize, 0, 0);
-				pos = (Vector2)transform.position;
-				MapGenerator.me.CheckPlayer ();
-				energy--;
+				
+				if (MapGenerator.me.CheckTile (new Vector2 (pos.x - 1, pos.y))) {
+					transform.Translate (-cellSize, 0, 0);
+					pos = (Vector2)transform.position;
+					MapGenerator.me.CheckPlayer ();
+					Master.me.DiscardMovementCard ();
+					energy--;
+				}
 			}
-
 		}
 			
 
@@ -105,13 +106,14 @@ public class PlayerMovement : MonoBehaviour {
 			Master.me.DrawCard ();
 
 		}
-			
 
-		if (Input.GetKeyDown(KeyCode.W) && Master.me.hand.Count > 0) {
+		if (Input.GetKeyDown (KeyCode.Space)) {
 
-	
+			Master.me.EndTurn ();
+
 		}
-			
+
+
 
 
 	
