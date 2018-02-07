@@ -13,6 +13,9 @@ public class PlayerMovement : MonoBehaviour {
 	public int health = 5;
 	public int gold;
 	public int moves;
+	public int energy = 3;
+
+
 
 	// Use this for initialization
 	void Start () {
@@ -52,10 +55,11 @@ public class PlayerMovement : MonoBehaviour {
 
 		if (Input.GetKeyDown (KeyCode.UpArrow) || Input.GetKeyDown (KeyCode.W)) {
 
-			if (Master.me.CheckMovementCard ()) {
+			if (Master.me.CheckMovementCard () && energy > 0) {
 				transform.Translate (0, cellSize, 0);
 				pos = (Vector2)transform.position;
 				MapGenerator.me.CheckPlayer ();
+				energy--;
 			}
 
 
@@ -63,10 +67,11 @@ public class PlayerMovement : MonoBehaviour {
 
 		if (Input.GetKeyDown (KeyCode.DownArrow) || Input.GetKeyDown (KeyCode.S)) {
 
-			if (Master.me.CheckMovementCard ()) {
+			if (Master.me.CheckMovementCard () && energy > 0) {
 				transform.Translate (0, -cellSize, 1);
 				pos = (Vector2)transform.position;
 				MapGenerator.me.CheckPlayer ();
+				energy--;
 				//Debug.Log (pos.y % 4);
 			}
 
@@ -74,20 +79,22 @@ public class PlayerMovement : MonoBehaviour {
 
 		if (Input.GetKeyDown (KeyCode.RightArrow) || Input.GetKeyDown (KeyCode.D)) {
 
-			if (Master.me.CheckMovementCard ()) {
+			if (Master.me.CheckMovementCard () && energy > 0) {
 				transform.Translate (cellSize, 0, 0);
 				pos = (Vector2)transform.position;
 				MapGenerator.me.CheckPlayer ();
+				energy--;
 			}
 
 		}
 
 		if (Input.GetKeyDown (KeyCode.LeftArrow) || Input.GetKeyDown (KeyCode.A)) {
 
-			if (Master.me.CheckMovementCard ()) {
+			if (Master.me.CheckMovementCard () && energy > 0) {
 				transform.Translate (-cellSize, 0, 0);
 				pos = (Vector2)transform.position;
 				MapGenerator.me.CheckPlayer ();
+				energy--;
 			}
 
 		}

@@ -16,6 +16,8 @@ public class EndTurnController : MonoBehaviour {
 
 	void OnMouseDown() {
 
+
+		Debug.Log ("turn ended");
 		Master.me.EndTurn ();
 
 

@@ -64,7 +64,7 @@ public class MapGenerator : MonoBehaviour {
 
 	public void CheckPlayer() {
 
-		Debug.Log ((int)PlayerMovement.me.pos.y % (mapHeight - offset));
+//		Debug.Log ((int)PlayerMovement.me.pos.y % (mapHeight - offset));
 		if ((int)PlayerMovement.me.pos.y % (mapHeight - offset) == 0) {
 
 			GenerateMap ();

@@ -5,6 +5,7 @@ using UnityEngine;
 public class Card : MonoBehaviour {
 
 	public string cardName; 
+	public int energy = 1;
 
 	// Use this for initialization
 	void Start () {
