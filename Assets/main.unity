@@ -1616,7 +1616,7 @@ MonoBehaviour:
   wallTile: {fileID: 1455260926193014, guid: 64226a8c1216a4c848338f28f10c9fc0, type: 2}
   moveTile: {fileID: 1450142724415532, guid: 46c598829332240a7b3c470653200923, type: 2}
   goldTile: {fileID: 1450142724415532, guid: e5f5aa6a7c2bd4f3a9be452b1a24d6cd, type: 2}
-  mapWidth: 10
+  mapWidth: 6
   mapHeight: 10
   totalHeight: 0
   map: {fileID: 0}

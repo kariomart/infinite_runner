@@ -26,18 +26,21 @@ public class EnemyController : MonoBehaviour {
 
 	public void MoveTowardsPlayer() {
 
+		Vector2 dir = PlayerMovement.me.pos - (Vector2)transform.position;
+		if ((Mathf.Abs (dir.x) == 1 && Mathf.Abs (dir.y) == 0) || (Mathf.Abs (dir.y) == 1 && Mathf.Abs (dir.x) == 0)) {
+			Debug.Log ("enemy attacked!");
+			PlayerMovement.me.health--;
+
+		}
+
 		float rand = Random.value;
 
 		if (rand > 0.4f) {
-
-			Vector2 dir = PlayerMovement.me.pos - (Vector2)transform.position;
-//			Debug.Log (dir);
-
+		//			Debug.Log (dir);
 			if ((Mathf.Abs (dir.x) == 1 && Mathf.Abs (dir.y) == 0) || (Mathf.Abs (dir.y) == 1 && Mathf.Abs (dir.x) == 0)) {
-				Debug.Log ("enemy attacked!");
-				PlayerMovement.me.health--;
-
-			} else if (Mathf.Abs (dir.x) > Mathf.Abs (dir.y)) {
+				
+			}
+			else if (Mathf.Abs (dir.x) > Mathf.Abs (dir.y)) {
 				if (dir.x < 0)
 					Move (-1, 0);
 				if (dir.x > 0)
