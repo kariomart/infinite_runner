@@ -31,6 +31,7 @@ public class Master : MonoBehaviour {
 	public float handOffset;
 	public int handSize;
 	public int maxEnergy = 3;
+	public float enemySpawnRate = 0.992f;
 
 
 	// Use this for initialization
@@ -226,13 +227,14 @@ public class Master : MonoBehaviour {
 	void SpawnEnemies() {
 
 		Debug.Log ("TRYING TO SPAWN");
+		enemySpawnRate -= 0.000005f;
 
 		for (int x = 0; x < MapGenerator.me.mapWidth; x++) {
 			for (int y = 3 + ((int)(PlayerMovement.me.pos.y) - 3); y < MapGenerator.me.totalHeight; y++) {
 
 				float rand = Random.value;
 //				Debug.Log (rand);
-				if (rand >= .992f && MapGenerator.me.CheckTile(new Vector2(x, y))) {
+				if (rand >= enemySpawnRate && MapGenerator.me.CheckTile(new Vector2(x, y))) {
 					
 					Instantiate (MapGenerator.me.enemy, new Vector2 (x, y), Quaternion.identity);
 
@@ -278,7 +280,7 @@ public class Master : MonoBehaviour {
 
 	}
 
-	void UpdateCardPositions() {
+	public void UpdateCardPositions() {
 
 		for (int i = 0; i < hand.Count; i ++) {
 			hand [i].GetComponent<CardDisplay> ().UpdatePosition (i);
@@ -297,7 +299,7 @@ public class Master : MonoBehaviour {
 
 	}
 
-	void UpdateLists() {
+	public void UpdateLists() {
 
 		hand.Clear ();
 		deck.Clear ();

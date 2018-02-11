@@ -113,10 +113,58 @@ public class PlayerMovement : MonoBehaviour {
 
 		}
 
-		if (Input.GetKeyDown (KeyCode.Alpha1) || Input.GetKeyDown (KeyCode.Alpha2) || Input.GetKeyDown (KeyCode.Alpha3) || Input.GetKeyDown (KeyCode.Alpha4) || Input.GetKeyDown (KeyCode.Alpha5)) {
+		if (Input.GetKeyDown (KeyCode.Alpha1)) {
 
+			if (Master.me.hand.Count > 0) {
+				Master.me.hand [0].GetComponent<CardDisplay> ().CardClicked ();
+				Master.me.UpdateLists ();
+				Master.me.UpdateCardPositions ();
+			}
 
 		}
+
+		if (Input.GetKeyDown (KeyCode.Alpha2)) {
+
+			if (Master.me.hand.Count > 1) {
+				Master.me.hand [1].GetComponent<CardDisplay> ().CardClicked ();
+				Master.me.UpdateLists ();
+				Master.me.UpdateCardPositions ();
+			}
+
+		}
+
+		if (Input.GetKeyDown (KeyCode.Alpha3)) {
+
+			if (Master.me.hand.Count > 2) {
+				Master.me.hand [2].GetComponent<CardDisplay> ().CardClicked ();
+				Master.me.UpdateLists ();
+				Master.me.UpdateCardPositions ();
+			}
+		}
+
+		if (Input.GetKeyDown (KeyCode.Alpha4)) {
+
+			if (Master.me.hand.Count > 3) {
+				Master.me.hand [3].GetComponent<CardDisplay> ().CardClicked ();
+				Master.me.UpdateLists ();
+				Master.me.UpdateCardPositions ();
+			}
+
+		}
+
+		if (Input.GetKeyDown (KeyCode.Alpha5)) {
+
+			if (Master.me.hand.Count > 4) {
+				Master.me.hand [0].GetComponent<CardDisplay> ().CardClicked ();
+				Master.me.UpdateLists ();
+				Master.me.UpdateCardPositions ();
+			}
+
+		}
+
+
+
+
 	}
 
 	public void MovePlayer(Vector2 pos) {
@@ -129,6 +177,12 @@ public class PlayerMovement : MonoBehaviour {
 	public void MoveForward() {
 
 		transform.Translate (0, cellSize, 0);
+
+	}
+
+	void OnTriggerStay2D(Collider2D coll) {
+
+		Debug.Log (coll.gameObject.tag);
 
 	}
 }

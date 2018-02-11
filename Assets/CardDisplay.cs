@@ -30,7 +30,7 @@ public class CardDisplay : MonoBehaviour {
 		
 	}
 
-	void OnMouseDown() {
+	public void CardClicked() {
 
 		Debug.Log ("card clicked");
 		if (PlayerMovement.me.energy > 0) {
@@ -38,7 +38,17 @@ public class CardDisplay : MonoBehaviour {
 			card.Played ();
 		}
 
+
+
 	}
+
+	void OnMouseDown() {
+
+		CardClicked ();
+
+
+	}
+		
 
 	void OnMouseEnter() {
 
