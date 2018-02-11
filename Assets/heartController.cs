@@ -18,7 +18,9 @@ public class heartController : MonoBehaviour {
 
 
 		if (coll.gameObject.tag == "Player") {
-			Debug.Log ("collided with player");
+			
+			PlayerMovement.me.health++;
+			Destroy (this.gameObject);
 
 		}
 

@@ -12,6 +12,10 @@ public class MapGenerator : MonoBehaviour {
 	public GameObject goldTile;
 	public GameObject visionTile;
 	public GameObject attackTile;
+	public GameObject wallBreakTile;
+	public GameObject teleportTile;
+
+	public GameObject heart;
 
 	public int mapWidth;
 	public int mapHeight;
@@ -55,7 +59,7 @@ public class MapGenerator : MonoBehaviour {
 
 //				Debug.Log (x + " " + y);
 
-				GameObject tile = DecideWhatToSpawn (y);
+				GameObject tile = DecideWhatToSpawn (x, y);
 				GameObject tempTile = Instantiate (tile, new Vector3 (x, y, 0), Quaternion.identity);
 				tempTile.transform.parent = map.transform;
 				//tempTile.GetComponentInChildren<SpriteRenderer> ().sortingOrder = -1;
@@ -112,7 +116,7 @@ public class MapGenerator : MonoBehaviour {
 
 	}
 
-	void RevealTiles() {
+	public void RevealTiles() {
 
 		Vector2 pos = PlayerMovement.me.pos;
 
@@ -148,12 +152,16 @@ public class MapGenerator : MonoBehaviour {
 
 	}
 
-	GameObject DecideWhatToSpawn(int y) {
+	GameObject DecideWhatToSpawn(int x, int y) {
 		float r = Random.value;
 
 		if (r <= .6f) {
 
 			// spawn default
+
+			if (Random.value >= .95f) {
+				SpawnHeart (x, y);
+			}
 			return baseTile;
 
 		} else if (r <= .75f) {
@@ -192,12 +200,20 @@ public class MapGenerator : MonoBehaviour {
 
 	}
 
+	void SpawnHeart(int x, int y) {
+
+		Instantiate (heart, new Vector3 (x, y, -0.2f), Quaternion.identity);
+//		Debug.Log("heart spawned at " + x + "," + y);
+	}
+
 	void AddTileTypes() {
 
 		tileTypes.Add (moveTile);
 		tileTypes.Add (goldTile);
 		tileTypes.Add (visionTile);
 		tileTypes.Add (attackTile);
+		tileTypes.Add (wallBreakTile);
+		tileTypes.Add (teleportTile);
 
 	}
 

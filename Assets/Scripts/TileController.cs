@@ -15,7 +15,7 @@ public class TileController : MonoBehaviour {
 	void Start () {
 
 		pos = (Vector2) (transform.position);
-		sprite = GetComponent<SpriteRenderer> ();
+		//sprite = GetComponent<SpriteRenderer> ();
 		//cover = GetComponent<SpriteRenderer> ();
 		display = GetComponent<TileDisplay> ();
 	
@@ -60,15 +60,4 @@ public class TileController : MonoBehaviour {
 	}
 
 
-
-	void OnTriggerEnter2D(Collider2D coll) {
-
-		Debug.Log ("collided");
-		if (coll.gameObject.tag == "Vision") {
-
-			cover.enabled = false;
-
-		}
-
-	}
 }
