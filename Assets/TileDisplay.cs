@@ -7,6 +7,7 @@ public class TileDisplay : MonoBehaviour {
 	TileController tile;
 	public SpriteRenderer cover;
 	public Color coverColor;
+	public SpriteRenderer tileSprite;
 
 	// Use this for initialization
 	void Start () {

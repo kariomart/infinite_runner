@@ -23,6 +23,8 @@ public class GoldCard : Card {
 
 		PlayerMovement.me.gold++;
 		Master.me.DiscardCard (this);
+		PlayerMovement.me.energy--;
+
 
 	}
 }

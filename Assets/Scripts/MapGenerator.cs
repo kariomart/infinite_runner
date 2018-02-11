@@ -7,8 +7,11 @@ public class MapGenerator : MonoBehaviour {
 	public static MapGenerator me;
 	public GameObject baseTile;
 	public GameObject wallTile;
+	public GameObject trapTile;
 	public GameObject moveTile;
 	public GameObject goldTile;
+	public GameObject visionTile;
+	public GameObject attackTile;
 
 	public int mapWidth;
 	public int mapHeight;
@@ -17,7 +20,7 @@ public class MapGenerator : MonoBehaviour {
 	public GameObject enemy;
 
 	int offset = 1;
-	//public int mapsGenerated;
+	List<GameObject> tileTypes = new List<GameObject>();
 
 
 	// Use this for initialization
@@ -31,8 +34,9 @@ public class MapGenerator : MonoBehaviour {
 
 		map = new GameObject ("Map");
 		Master.me.map = new TileController[mapWidth, mapHeight];
-
+		AddTileTypes ();
 		GenerateMap ();
+		PlayerMovement.me.MovePlayer (new Vector2 (mapWidth / 2, 1));
 		//CheckPlayer ();
 		
 	}
@@ -51,7 +55,7 @@ public class MapGenerator : MonoBehaviour {
 
 //				Debug.Log (x + " " + y);
 
-				GameObject tile = DecideWhatToSpawn ();
+				GameObject tile = DecideWhatToSpawn (y);
 				GameObject tempTile = Instantiate (tile, new Vector3 (x, y, 0), Quaternion.identity);
 				tempTile.transform.parent = map.transform;
 				//tempTile.GetComponentInChildren<SpriteRenderer> ().sortingOrder = -1;
@@ -87,6 +91,10 @@ public class MapGenerator : MonoBehaviour {
 //		Debug.Log (pos);
 
 		if (GetTile (pos).gameObject.tag == "Wall") {
+			return false;
+		}
+
+		if (pos == PlayerMovement.me.pos) {
 			return false;
 		}
 
@@ -130,38 +138,97 @@ public class MapGenerator : MonoBehaviour {
 
 	public TileController GetTile(Vector2 pos) {
 
-		return Master.me.tiles [pos].GetComponent<TileController> ();
+		if (Master.me.tiles.ContainsKey (pos)) {
+			GameObject tile = Master.me.tiles [pos];
+			return tile.GetComponent<TileController> ();
+			
+		} else {
+			return Master.me.tiles [PlayerMovement.me.pos].GetComponent<TileController> ();
+		}
 
 	}
 
-	GameObject DecideWhatToSpawn() {
+	GameObject DecideWhatToSpawn(int y) {
 		float r = Random.value;
 
-		if (r > .8f) {
-			return wallTile;
+		if (r <= .6f) {
+
+			// spawn default
+			return baseTile;
+
+		} else if (r <= .75f) {
+			
+			return PickObstruction ();
+
+		} else if (r <= .85) {
+
+			// spawn special tile
+			return PickCardTile ();
+
 		} else {
+			
+			return baseTile;
+		}
 
+	}
 
-			int rand = Random.Range (0, 1000);
+	GameObject PickCardTile() {
 
-			if (rand <= 800) {
+		return tileTypes[Random.Range(0, tileTypes.Count)];
 
-				return baseTile;
+	}
 
-			} else if (rand <= 900) {
+	GameObject PickObstruction() {
+		float r = Random.value;
 
-				return moveTile;
-			} else if (rand <= 1000) {
+		if (r <= 0.95f) {
+			return wallTile;
 
-				return goldTile;
-			} else {
-
-				return baseTile;
-
-			}
+		} else {
+			return trapTile;
 		}
 
 
+
 	}
+
+	void AddTileTypes() {
+
+		tileTypes.Add (moveTile);
+		tileTypes.Add (goldTile);
+		tileTypes.Add (visionTile);
+		tileTypes.Add (attackTile);
+
+	}
+
+
+//
+//		if (r > .8f /*&& (x != 0 && x != mapWidth)*/) {
+//			Debug.Log (x);
+//			return wallTile;
+//		} else {
+//
+//
+//			int rand = Random.Range (0, 1000);
+//
+//			if (rand <= 800) {
+//
+//				return baseTile;
+//
+//			} else if (rand <= 900) {
+//
+//				return moveTile;
+//			} else if (rand <= 1000) {
+//
+//				return goldTile;
+//			} else {
+//
+//				return baseTile;
+//
+//			}
+//		}
+//
+//
+//	}
 
 }

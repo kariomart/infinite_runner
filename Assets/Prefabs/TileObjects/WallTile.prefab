@@ -60,7 +60,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4034374718117696
 Transform:
   m_ObjectHideFlags: 1
@@ -143,6 +143,7 @@ MonoBehaviour:
   pos: {x: 0, y: 0}
   card: {fileID: 0}
   sprite: {fileID: 0}
+  defaultTile: {fileID: 21300000, guid: 9529da3bf782142a8a47f3c0f56f9288, type: 3}
 --- !u!114 &114994781838381372
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -156,6 +157,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cover: {fileID: 0}
   coverColor: {r: 0, g: 0, b: 0, a: 0}
+  tileSprite: {fileID: 212359291327801050}
 --- !u!212 &212020520042640728
 SpriteRenderer:
   m_ObjectHideFlags: 1

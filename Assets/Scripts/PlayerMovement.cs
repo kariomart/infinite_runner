@@ -113,10 +113,17 @@ public class PlayerMovement : MonoBehaviour {
 
 		}
 
+		if (Input.GetKeyDown (KeyCode.Alpha1) || Input.GetKeyDown (KeyCode.Alpha2) || Input.GetKeyDown (KeyCode.Alpha3) || Input.GetKeyDown (KeyCode.Alpha4) || Input.GetKeyDown (KeyCode.Alpha5)) {
 
 
+		}
+	}
 
-	
+	public void MovePlayer(Vector2 pos) {
+
+		transform.position = pos;
+		this.pos = new Vector2 ((int)pos.x, (int)pos.y);
+
 	}
 
 	public void MoveForward() {

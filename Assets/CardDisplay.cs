@@ -22,7 +22,7 @@ public class CardDisplay : MonoBehaviour {
 
 		if (transform.parent == Master.me.handParent) {
 
-			int index = Master.me.hand.IndexOf (this.gameObject);
+			//int index = Master.me.hand.IndexOf (this.gameObject);
 			Vector3 pos = Master.me.handStart.transform.position;
 			//transform.position = new Vector3(pos.x + 
 

@@ -219,6 +219,7 @@ public class Master : MonoBehaviour {
 		UpdateLists ();
 		UpdateCardPositions ();
 		MoveEnemies ();
+		MapGenerator.me.GetTile (PlayerMovement.me.pos).GiveCard ();
 		PlayerMovement.me.energy = maxEnergy;
 	}
 
@@ -231,7 +232,7 @@ public class Master : MonoBehaviour {
 
 				float rand = Random.value;
 //				Debug.Log (rand);
-				if (rand >= .995f && MapGenerator.me.CheckTile(new Vector2(x, y))) {
+				if (rand >= .992f && MapGenerator.me.CheckTile(new Vector2(x, y))) {
 					
 					Instantiate (MapGenerator.me.enemy, new Vector2 (x, y), Quaternion.identity);
 

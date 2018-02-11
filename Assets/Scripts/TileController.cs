@@ -9,6 +9,7 @@ public class TileController : MonoBehaviour {
 	public Vector2 pos;
 	public GameObject card;
 	public SpriteRenderer sprite;
+	public Sprite defaultTile;
 
 	// Use this for initialization
 	void Start () {
@@ -29,13 +30,9 @@ public class TileController : MonoBehaviour {
 		
 	}
 
-	public  void TileEntered() {
+	public virtual void TileEntered() {
 
-		if (card != null) {
-			Master.me.AddCard (card);
-			Debug.Log ("added " + card.name + "!");
-			card = null;
-		}
+
 
 	}
 
@@ -48,6 +45,17 @@ public class TileController : MonoBehaviour {
 	public void Clicked() {
 
 		Master.me.selectedTile = this;
+
+	}
+
+	public void GiveCard() {
+
+		if (card != null) {
+			Master.me.AddCard (card);
+			Debug.Log ("added " + card.name + "!");
+			card = null;
+			display.tileSprite.sprite = defaultTile;
+		}
 
 	}
 

@@ -37,6 +37,7 @@ public class AttackCard : Card {
 					PlayerMovement.me.energy--;
 					Master.me.selectedTile = null;
 					base.Played ();
+					Master.me.DiscardCard (this);
 
 				} else {
 					Debug.Log ("not in range"); 
