@@ -193,7 +193,7 @@ public class PlayerMovement : MonoBehaviour {
 
 	void CheckIfDead() {
 
-		if (health == 0) {
+		if (health <= 0) {
 
 			ScoreController.me.playerY = (int)this.pos.y;
 			ScoreController.me.gold = this.gold;
