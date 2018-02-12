@@ -138,7 +138,7 @@ public class MapGenerator : MonoBehaviour {
 			
 		foreach (EnemyController e in Master.me.enemies) {
 
-			if (pos == e.pos) {
+			if (pos == e.pos && e != null) {
 
 				//Debug.Log ("squashed enemy");
 				PlayerMovement.me.health --;
