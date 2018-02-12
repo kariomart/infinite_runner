@@ -8,7 +8,7 @@ public class CardDisplay : MonoBehaviour {
 	float hoverOffset = .5f;
 	float hoverSpeed = .1f;
 	float floatOffset = 2.5f;
-	float floatSpeed = .15f;
+	float floatSpeed = .1f;
 	Vector3 floatStartPos;
 	float floatEndPos;
 
@@ -26,6 +26,7 @@ public class CardDisplay : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+
 		//Debug.Log (transform.parent);
 		//Debug.Log (Master.me.handParent);
 		//if (transform.parent == Master.me.handParent.transform) {
@@ -33,6 +34,12 @@ public class CardDisplay : MonoBehaviour {
 			//int index = Master.me.hand.IndexOf (this.gameObject);
 			//Vector3 pos = Master.me.handStart.transform.position;
 			//transform.position = new Vector3(pos.x + 
+		if (card.isSelected && selectedFX != null && !selectedFX.activeInHierarchy) {
+			Debug.Log ("hovering");
+			floatStartPos = transform.position;
+			floatEndPos = transform.position.y + floatOffset;
+		}
+
 		if (card.isSelected && selectedFX != null) {
 
 			selectedFX.SetActive (true);
@@ -42,14 +49,11 @@ public class CardDisplay : MonoBehaviour {
 
 		}
 	
-		if (card.isSelected && selectedFX != null && !selectedFX.activeInHierarchy) {
-			Debug.Log ("hovering");
-			floatStartPos = transform.position;
-			floatEndPos = transform.position.y + floatOffset;
-		}
+
 
 		if (!card.isSelected && selectedFX != null) {
 			selectedFX.SetActive (false);
+
 		}
 
 //		else if (!card.isSelected && selectedFX != null && selectedFX.activeInHierarchy) {
@@ -70,7 +74,7 @@ public class CardDisplay : MonoBehaviour {
 		if (PlayerMovement.me.energy > 0) {
 			//Master.me.UpdateCardPositions ();
 			card.Selected ();
-			card.Played ();
+			//card.Played ();
 		}
 
 	
@@ -89,15 +93,17 @@ public class CardDisplay : MonoBehaviour {
 
 	void OnMouseEnter() {
 
-		startPos = transform.position;
-		endPos = transform.position.y + hoverOffset;
+		if (!card.isSelected) {
+			startPos = transform.position;
+			endPos = transform.position.y + hoverOffset;
+		}
 
 	}
 
 	void OnMouseOver() {
 //		Debug.Log ("hovering, endpos is: " + endPos);
 
-		if (transform.position.y <= endPos) {
+		if (transform.position.y <= endPos && !card.isSelected) {
 
 			transform.position = new Vector3 (transform.position.x, transform.position.y + hoverSpeed, transform.position.z);
 
@@ -107,8 +113,9 @@ public class CardDisplay : MonoBehaviour {
 
 	void OnMouseExit() {
 
-		transform.position = startPos;
-
+		if (!card.isSelected) {
+			transform.position = startPos;
+		}
 
 	}
 
@@ -120,6 +127,8 @@ public class CardDisplay : MonoBehaviour {
 
 
 	}
+
+
 
 
 }

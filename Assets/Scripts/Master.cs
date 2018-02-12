@@ -15,8 +15,10 @@ public class Master : MonoBehaviour {
 	public List <GameObject> discard = new List<GameObject> ();
 	public List<GameObject> cards = new List<GameObject>();
 	public List<EnemyController> enemies = new List<EnemyController>();
+	public List<GameObject> hud = new List<GameObject> ();
 	public TileController[,] map;
 	public TileController selectedTile;
+	public Card selectedCard;
 
 
 	public GameObject handParent;
@@ -26,6 +28,7 @@ public class Master : MonoBehaviour {
 	public Text healthText;
 	public Text goldText;
 	public Text energyText;
+	public Text cardDescription;
 
 	public GameObject handStart;
 	public float handOffset;
@@ -64,6 +67,8 @@ public class Master : MonoBehaviour {
 		if (Input.GetKeyDown (KeyCode.Escape)) {
 			UnityEngine.SceneManagement.SceneManager.LoadScene ("main");
 		}
+
+		UpdateCardDescription ();
 	}
 
 	public void DrawCard() {
@@ -218,6 +223,7 @@ public class Master : MonoBehaviour {
 
 		SpawnEnemies ();
 		UpdateLists ();
+		DeselectCards ();
 		UpdateCardPositions ();
 		MoveEnemies ();
 		MapGenerator.me.GetTile (PlayerMovement.me.pos).GiveCard ();
@@ -303,8 +309,6 @@ public class Master : MonoBehaviour {
 		healthText.text = "HEALTH: " + PlayerMovement.me.health;
 		energyText.text = "ENERGY: " + PlayerMovement.me.energy;
 
-
-
 	}
 
 	public void UpdateLists() {
@@ -331,6 +335,57 @@ public class Master : MonoBehaviour {
 
 		}
 
+
+	}
+
+	public void UpdateCardDescription() {
+
+//		if (selectedCard == null) { 
+//			cardDescription.text = "";
+//		}
+
+		if (selectedCard != null) { 
+			cardDescription.text = selectedCard.cardName + ":\n" + selectedCard.cardDescription;
+		}
+
+	}
+
+	public void DisplayDeckInfo() {
+
+		string cards = "";
+
+		foreach (GameObject c in deck) {
+
+			cards += c.GetComponent<Card> ().name + ", ";
+
+		}
+
+		cardDescription.text = cards;
+		
+//		int count = 0;
+//
+//		foreach (GameObject c in deck) {
+//
+//			Debug.Log ("making new card obj");
+//			GameObject card = Instantiate (c, Camera.main.transform);
+//			card.transform.position = new Vector3 (-8 + (count / 4), 0, 10); 
+//			card.SetActive (true);
+//			hud.Add (card);
+//			count ++;
+//
+//		}
+
+	}
+
+	public void ClearDeckInfo() {
+
+		foreach (GameObject c in hud) {
+
+			Destroy (c);
+
+		}
+
+		hud.Clear ();
 
 	}
 		

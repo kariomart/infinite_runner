@@ -7,8 +7,8 @@ public class AttackCard : Card {
 	// Use this for initialization
 	void Start () {
 
-		cardName = "Attack Card";
-		cardDescription = "this card can attack enemies that are directly adjacent to you.";
+		cardName = "attack";
+		cardDescription = "this card can attack enemies directly adjacent to you.";
 
 	}
 	

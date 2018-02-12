@@ -46,7 +46,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4614628462822854
 Transform:
   m_ObjectHideFlags: 1
@@ -112,6 +112,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isSelected: 0
   cardName: 
+  cardDescription: 
   energy: 1
 --- !u!114 &114723064533446088
 MonoBehaviour:

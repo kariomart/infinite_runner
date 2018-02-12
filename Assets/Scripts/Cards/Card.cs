@@ -8,6 +8,7 @@ public class Card : MonoBehaviour {
 	public string cardName; 
 	public string cardDescription;
 	public int energy = 1;
+	public Vector2[] highlightTiles;
 
 	// Use this for initialization
 	void Start () {
@@ -21,17 +22,21 @@ public class Card : MonoBehaviour {
 
 	}
 
-	public void Selected() {
+	public virtual void Selected() {
 		
 		Master.me.DeselectCards ();
+		Master.me.UpdateCardPositions ();
 		isSelected = true;
+		Master.me.selectedCard = this;
 		Debug.Log (gameObject.name + "was selected");
-		//Master.me.selectedTile = null;
+		//MapGenerator.me.HighlightTiles (highlightTiles);
+		Master.me.selectedTile = null;
 	}
 
 	public virtual void Played() {
 
 		isSelected = false;
+		Master.me.selectedCard = null;
 
 	}
 		

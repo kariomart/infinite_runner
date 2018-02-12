@@ -7,6 +7,9 @@ public class GoldCard : Card {
 
 	// Use this for initialization
 	void Start () {
+
+		cardName = "Gold";
+		cardDescription = "grants 1 gold";
 		
 	}
 	

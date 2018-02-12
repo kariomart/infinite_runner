@@ -176,6 +176,22 @@ public class MapGenerator : MonoBehaviour {
 
 	}
 
+	public void HighlightTiles(Vector2[] positions) {
+
+		for (int i = 0; i < positions.Length; i++) {
+
+			TileController tile = GetTile (positions [i]);
+			//tile.cover.enabled = true;
+			tile.display.tileSprite.color = Color.green;
+		}
+
+	
+
+
+
+
+	}
+
 	GameObject DecideWhatToSpawn(int x, int y) {
 		float r = Random.value;
 

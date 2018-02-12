@@ -19,8 +19,23 @@ public class DeckController : MonoBehaviour {
 
 		Debug.Log ("deck clicked!");
 
-			Master.me.DrawCard ();
+		//Master.me.DrawCard ();
+		//Master.me.GetDeckInfo ();
+			
+	}
+
+	void OnMouseEnter() {
+
+		//Debug.Log ("mousing over deck");
+		Master.me.DisplayDeckInfo ();
 
 	}
+
+	void OnMouseExit() {
+
+		//Master.me.ClearDeckInfo ();
+
+	}
+		
 
 }

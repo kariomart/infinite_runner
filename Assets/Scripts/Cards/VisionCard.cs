@@ -10,15 +10,21 @@ public class VisionCard : Card {
 	// Use this for initialization
 	void Start () {
 
-		cardName = "Vision Card";
-		cardDescription = "grants an area of vision on selected tile.\t";
+		cardName = "vision";
+		cardDescription = "grants an area of vision on selected tile"; 
+//		highlightTiles = new Vector2[]{ new Vector2(PlayerMovement.me.pos.x + 1, PlayerMovement.me.pos.y), 
+//							new Vector2(PlayerMovement.me.pos.x - 1, PlayerMovement.me.pos.y), 
+//							new Vector2(PlayerMovement.me.pos.x, PlayerMovement.me.pos.y + 1), 
+//							new Vector2(PlayerMovement.me.pos.x, PlayerMovement.me.pos.y - 1)};
 		
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
+
 		Played ();
+		//UpdateHighlightPositions ();
 		
 	}
 		
@@ -46,5 +52,15 @@ public class VisionCard : Card {
 			//play sound effect
 			//Debug.Log("need to select a tile first!");
 		}
+	}
+
+	public void UpdateHighlightPositions() {
+
+		highlightTiles = new Vector2[]{ new Vector2(PlayerMovement.me.pos.x + 1, PlayerMovement.me.pos.y), 
+			new Vector2(PlayerMovement.me.pos.x - 1, PlayerMovement.me.pos.y), 
+			new Vector2(PlayerMovement.me.pos.x, PlayerMovement.me.pos.y + 1), 
+			new Vector2(PlayerMovement.me.pos.x, PlayerMovement.me.pos.y - 1)};
+
+
 	}
 }
