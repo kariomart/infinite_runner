@@ -34,10 +34,10 @@ public class WallBreakCard : Card {
 				int dis = (int)(Master.me.selectedTile.pos - PlayerMovement.me.pos).magnitude;
 				Debug.Log ("attack dis " + dis);
 
-				if (dis <= 3) {
+				if (dis <= 1) {
 	
 					tile.gameObject.transform.tag = "Untagged";
-					tile.sprite.color = Color.white;
+					tile.sprite.sprite = tile.defaultTile;
 					PlayerMovement.me.energy--;
 					Master.me.selectedTile = null;
 					base.Played ();
