@@ -36,7 +36,7 @@ public class EnemyController : MonoBehaviour {
 
 		float rand = Random.value;
 
-		if (rand > 0.25f) {
+		if (rand > 0f) {
 		//			Debug.Log (dir);
 			if ((Mathf.Abs (dir.x) == 1 && Mathf.Abs (dir.y) == 0) || (Mathf.Abs (dir.y) == 1 && Mathf.Abs (dir.x) == 0)) {
 				

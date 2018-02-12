@@ -35,10 +35,13 @@ public class MovementCard : Card {
 				Vector2 dir = tile.pos - PlayerMovement.me.pos;
 
 				Debug.Log ("move dis " + dis);
+				Debug.Log (dir.x);
 
-				if (dis <= 1 && !(dir.x == 1 && dir.y == 1)) {
+				//if (dis <= 1 && !(dir.x == 1 && dir.y == 1) && dir.x != 0) {
+				if ( (dir.x == 1 || dir.x == -1) && !(Mathf.Abs(dir.x) == 1 && Mathf.Abs(dir.y) == 1)) {
 
 					PlayerMovement.me.MovePlayer (tile.pos);
+					MapGenerator.me.CheckIfBadTile (tile.pos);
 					PlayerMovement.me.energy--;
 					Master.me.selectedTile = null;
 					base.Played ();
@@ -46,12 +49,12 @@ public class MovementCard : Card {
 
 				} else {
 					Debug.Log ("not in range"); 
-					base.Played ();
+					//base.Played ();
 				}
 
 			} else {
 				Debug.Log ("no enemy on space");
-				base.Played ();
+				//base.Played ();
 			}
 
 
