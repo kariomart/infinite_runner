@@ -38,8 +38,9 @@ public class TeleportCard : Card {
 			Master.me.selectedTile = null;
 
 			base.Played ();
-			Destroy (this.gameObject);
+			this.gameObject.transform.parent = null;
 			Master.me.UpdateLists ();
+			Destroy (this.gameObject);
 
 		} else {
 			//play sound effect

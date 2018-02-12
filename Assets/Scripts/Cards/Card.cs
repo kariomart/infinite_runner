@@ -6,6 +6,7 @@ public class Card : MonoBehaviour {
 
 	public bool isSelected;
 	public string cardName; 
+	public string cardDescription;
 	public int energy = 1;
 
 	// Use this for initialization
@@ -15,7 +16,9 @@ public class Card : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+
+
+
 	}
 
 	public void Selected() {

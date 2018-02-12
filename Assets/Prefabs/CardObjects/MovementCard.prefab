@@ -37,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1644953692085174}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0029996037, y: 0.003028452, z: 1}
+  m_LocalPosition: {x: -1.98, y: 0.003028452, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 0.9950827}
   m_Children: []
   m_Father: {fileID: 0}
@@ -79,7 +79,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8fcf5900ebea45b29ef5dc348ef6fa2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isSelected: 0
   cardName: 
+  energy: 1
 --- !u!114 &114501308889348596
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -91,6 +93,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f43e9343f390942b8a7f31488ea92eeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selectedFX: {fileID: 0}
 --- !u!212 &212915537304002232
 SpriteRenderer:
   m_ObjectHideFlags: 1

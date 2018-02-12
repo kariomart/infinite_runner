@@ -40,36 +40,36 @@ public class PlayerMovement : MonoBehaviour {
 	void DealWithInput() {
 
 
-		if (Input.GetKeyDown (KeyCode.UpArrow) || Input.GetKeyDown (KeyCode.W)) {
+//		if (Input.GetKeyDown (KeyCode.UpArrow) || Input.GetKeyDown (KeyCode.W)) {
+//
+//			if (Master.me.CheckMovementCard () && energy > 0) {
+//
+//				if (MapGenerator.me.CheckTile (new Vector2 (pos.x, pos.y + 1))) {
+//					transform.Translate (0, cellSize, 0);
+//					pos = (Vector2)transform.position;
+//					MapGenerator.me.CheckPlayer ();
+//					Master.me.DiscardMovementCard ();
+//					energy--;
+//				}
+//			}
+//
+//
+//		}
 
-			if (Master.me.CheckMovementCard () && energy > 0) {
-
-				if (MapGenerator.me.CheckTile (new Vector2 (pos.x, pos.y + 1))) {
-					transform.Translate (0, cellSize, 0);
-					pos = (Vector2)transform.position;
-					MapGenerator.me.CheckPlayer ();
-					Master.me.DiscardMovementCard ();
-					energy--;
-				}
-			}
-
-
-		}
-
-		if (Input.GetKeyDown (KeyCode.DownArrow) || Input.GetKeyDown (KeyCode.S)) {
-
-			if (Master.me.CheckMovementCard () && energy > 0) {
-				
-				if (MapGenerator.me.CheckTile (new Vector2 (pos.x, pos.y - 1))) {
-					transform.Translate (0, -cellSize, 0);
-					pos = (Vector2)transform.position;
-					MapGenerator.me.CheckPlayer ();
-					Master.me.DiscardMovementCard ();
-					energy--;
-				}
-			}
-
-		}
+//		if (Input.GetKeyDown (KeyCode.DownArrow) || Input.GetKeyDown (KeyCode.S)) {
+//
+//			if (Master.me.CheckMovementCard () && energy > 0) {
+//				
+//				if (MapGenerator.me.CheckTile (new Vector2 (pos.x, pos.y - 1))) {
+//					transform.Translate (0, -cellSize, 0);
+//					pos = (Vector2)transform.position;
+//					MapGenerator.me.CheckPlayer ();
+//					Master.me.DiscardMovementCard ();
+//					energy--;
+//				}
+//			}
+//
+//		}
 
 		if (Input.GetKeyDown (KeyCode.RightArrow) || Input.GetKeyDown (KeyCode.D)) {
 
@@ -171,6 +171,7 @@ public class PlayerMovement : MonoBehaviour {
 
 		transform.position = pos;
 		this.pos = new Vector2 ((int)pos.x, (int)pos.y);
+		MapGenerator.me.CheckPlayer ();
 
 	}
 

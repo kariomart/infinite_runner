@@ -6,7 +6,10 @@ public class AttackCard : Card {
 
 	// Use this for initialization
 	void Start () {
-		
+
+		cardName = "Attack Card";
+		cardDescription = "this card can attack enemies that are directly adjacent to you.";
+
 	}
 	
 	// Update is called once per frame

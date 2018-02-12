@@ -9,6 +9,9 @@ public class VisionCard : Card {
 
 	// Use this for initialization
 	void Start () {
+
+		cardName = "Vision Card";
+		cardDescription = "grants an area of vision on selected tile.\t";
 		
 	}
 	
@@ -29,6 +32,7 @@ public class VisionCard : Card {
 		//Debug.Log ("trying to play " + gameObject.name);
 
 		if (isSelected && Master.me.selectedTile != null) {
+			
 			MapGenerator.me.RevealTiles (Master.me.selectedTile.pos);
 
 			Debug.Log ("played " + gameObject.name);

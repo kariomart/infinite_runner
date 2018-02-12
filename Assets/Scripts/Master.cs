@@ -222,6 +222,14 @@ public class Master : MonoBehaviour {
 		MoveEnemies ();
 		MapGenerator.me.GetTile (PlayerMovement.me.pos).GiveCard ();
 		PlayerMovement.me.energy = maxEnergy;
+
+		//if (MapGenerator.me.CheckTile(new Vector2(PlayerMovement.me.pos.x, PlayerMovement.me.pos.y + 1))) {
+		MapGenerator.me.CheckIfBadTile(new Vector2(PlayerMovement.me.pos.x, PlayerMovement.me.pos.y + 1));
+		PlayerMovement.me.MovePlayer (new Vector2 (PlayerMovement.me.pos.x, PlayerMovement.me.pos.y + 1));
+		MapGenerator.me.RevealTiles ();
+		MapGenerator.me.CheckPlayer ();
+
+		//}
 	}
 
 	void SpawnEnemies() {

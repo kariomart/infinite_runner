@@ -7,8 +7,14 @@ public class CardDisplay : MonoBehaviour {
 	Card card;
 	float hoverOffset = .5f;
 	float hoverSpeed = .1f;
+	float floatOffset = 2.5f;
+	float floatSpeed = .15f;
+	Vector3 floatStartPos;
+	float floatEndPos;
+
 	Vector3 startPos;
 	float endPos;
+	public GameObject selectedFX;
 
 	// Use this for initialization
 	void Start () {
@@ -20,13 +26,41 @@ public class CardDisplay : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if (transform.parent == Master.me.handParent) {
+		//Debug.Log (transform.parent);
+		//Debug.Log (Master.me.handParent);
+		//if (transform.parent == Master.me.handParent.transform) {
 
 			//int index = Master.me.hand.IndexOf (this.gameObject);
-			Vector3 pos = Master.me.handStart.transform.position;
+			//Vector3 pos = Master.me.handStart.transform.position;
 			//transform.position = new Vector3(pos.x + 
+		if (card.isSelected && selectedFX != null) {
+
+			selectedFX.SetActive (true);
+			if (transform.position.y <= floatEndPos) {
+				transform.position = new Vector3 (transform.position.x, transform.position.y + floatSpeed, transform.position.z);
+			}
 
 		}
+	
+		if (card.isSelected && selectedFX != null && !selectedFX.activeInHierarchy) {
+			Debug.Log ("hovering");
+			floatStartPos = transform.position;
+			floatEndPos = transform.position.y + floatOffset;
+		}
+
+		if (!card.isSelected && selectedFX != null) {
+			selectedFX.SetActive (false);
+		}
+
+//		else if (!card.isSelected && selectedFX != null && selectedFX.activeInHierarchy) {
+//			//Debug.Log ("not particling");
+//			selectedFX.SetActive (false);
+//			transform.position = floatStartPos;
+//			Debug.Log ("how is this possible");
+//		}
+				
+
+		//}
 		
 	}
 
@@ -34,9 +68,12 @@ public class CardDisplay : MonoBehaviour {
 
 		Debug.Log ("card clicked");
 		if (PlayerMovement.me.energy > 0) {
+			//Master.me.UpdateCardPositions ();
 			card.Selected ();
 			card.Played ();
 		}
+
+	
 
 
 

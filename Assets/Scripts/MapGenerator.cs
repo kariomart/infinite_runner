@@ -116,6 +116,30 @@ public class MapGenerator : MonoBehaviour {
 
 	}
 
+	public void CheckIfBadTile(Vector2 pos) {
+
+		//		Debug.Log (pos);
+
+		if (GetTile (pos).gameObject.tag == "Wall") {
+			PlayerMovement.me.health = 0;
+		}
+			
+		foreach (EnemyController e in Master.me.enemies) {
+
+			if (pos == e.pos) {
+
+				//Debug.Log ("squashed enemy");
+				PlayerMovement.me.health --;
+				Destroy (e.gameObject);
+
+			}
+
+		}
+			
+	}
+
+
+
 	public void RevealTiles() {
 
 		Vector2 pos = PlayerMovement.me.pos;

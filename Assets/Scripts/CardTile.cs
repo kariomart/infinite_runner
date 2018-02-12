@@ -6,6 +6,7 @@ public class CardTile : TileController {
 
 	public GameObject card;
 
+
 	// Use this for initialization
 	void Start () {
 		
