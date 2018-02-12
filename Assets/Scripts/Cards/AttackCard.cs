@@ -7,8 +7,8 @@ public class AttackCard : Card {
 	// Use this for initialization
 	void Start () {
 
-		cardName = "attack";
-		cardDescription = "this card can attack enemies directly adjacent to you.";
+		cardName = "khopesh";
+		cardDescription = "attack enemies directly adjacent to you.";
 
 	}
 	
@@ -35,8 +35,8 @@ public class AttackCard : Card {
 				Debug.Log ("attack dis " + dis);
 
 				if (dis <= 1) {
-
 					enemy.health--;
+					ScoreController.me.enemiesKilled++;
 					PlayerMovement.me.energy--;
 					Master.me.selectedTile = null;
 					base.Played ();

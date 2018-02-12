@@ -116,6 +116,18 @@ public class MapGenerator : MonoBehaviour {
 
 	}
 
+	public bool CheckIfOnMap(Vector2 pos) {
+
+		if (Master.me.tiles.ContainsKey (pos)) {
+
+			return true;
+
+		} else {
+			return false;
+		}
+
+	}
+
 	public void CheckIfBadTile(Vector2 pos) {
 
 		//		Debug.Log (pos);
@@ -130,6 +142,7 @@ public class MapGenerator : MonoBehaviour {
 
 				//Debug.Log ("squashed enemy");
 				PlayerMovement.me.health --;
+				ScoreController.me.enemiesKilled++;
 				Destroy (e.gameObject);
 
 			}
@@ -227,6 +240,7 @@ public class MapGenerator : MonoBehaviour {
 	}
 
 	GameObject PickObstruction() {
+		return wallTile;
 		float r = Random.value;
 
 		if (r <= 0.95f) {

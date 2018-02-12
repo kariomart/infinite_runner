@@ -68,7 +68,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1455260926193014}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 3.9163613, y: 0.21335828, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4781211446673710}
@@ -142,7 +142,7 @@ MonoBehaviour:
   display: {fileID: 0}
   pos: {x: 0, y: 0}
   card: {fileID: 0}
-  sprite: {fileID: 0}
+  sprite: {fileID: 212359291327801050}
   defaultTile: {fileID: 21300000, guid: 9529da3bf782142a8a47f3c0f56f9288, type: 3}
 --- !u!114 &114994781838381372
 MonoBehaviour:
@@ -155,7 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99cd8e3c678544ffa91b234792efee49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cover: {fileID: 0}
+  cover: {fileID: 212020520042640728}
   coverColor: {r: 0, g: 0, b: 0, a: 0}
   tileSprite: {fileID: 212359291327801050}
 --- !u!212 &212020520042640728

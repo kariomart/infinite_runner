@@ -10,8 +10,8 @@ public class TeleportCard : Card {
 	// Use this for initialization
 	void Start () {
 
-		cardName = "teleport";
-		cardDescription = "move to selected tile";
+		cardName = "feathers";
+		cardDescription = "one time use; move to selected tile";
 		
 	}
 	

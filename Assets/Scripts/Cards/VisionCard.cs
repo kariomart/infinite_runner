@@ -10,7 +10,7 @@ public class VisionCard : Card {
 	// Use this for initialization
 	void Start () {
 
-		cardName = "vision";
+		cardName = "eye of ra";
 		cardDescription = "grants an area of vision on selected tile"; 
 //		highlightTiles = new Vector2[]{ new Vector2(PlayerMovement.me.pos.x + 1, PlayerMovement.me.pos.y), 
 //							new Vector2(PlayerMovement.me.pos.x - 1, PlayerMovement.me.pos.y), 

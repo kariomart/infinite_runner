@@ -6,12 +6,13 @@ public class EnemyController : MonoBehaviour {
 
 	public Vector2 pos;
 	public int health = 1;
+	public GameObject sprite;
 
 	// Use this for initialization
 	void Start () {
 
 		pos = transform.position;
-		
+		//sprite = GetComponentInChildren<SpriteRenderer> ().gameObject;
 	}
 	
 	// Update is called once per frame
@@ -35,32 +36,49 @@ public class EnemyController : MonoBehaviour {
 
 		float rand = Random.value;
 
-		if (rand > 0.4f) {
+		if (rand > 0.25f) {
 		//			Debug.Log (dir);
 			if ((Mathf.Abs (dir.x) == 1 && Mathf.Abs (dir.y) == 0) || (Mathf.Abs (dir.y) == 1 && Mathf.Abs (dir.x) == 0)) {
 				
 			}
 			else if (Mathf.Abs (dir.x) > Mathf.Abs (dir.y)) {
-				if (dir.x < 0)
+				if (dir.x < 0) {
 					Move (-1, 0);
-				if (dir.x > 0)
+					sprite.transform.eulerAngles = new Vector3 (0, 0, 90);
+				}
+				if (dir.x > 0) {
 					Move (1, 0);
+					sprite.transform.eulerAngles = new Vector3 (0, 0, -90);
+				}
 			} else if (Mathf.Abs (dir.x) < Mathf.Abs (dir.y)) {
-				if (dir.y < 0)
+				if (dir.y < 0) {
 					Move (0, -1);
-				if (dir.y > 0)
+					sprite.transform.eulerAngles = new Vector3 (0, 0, 180);
+				}
+				if (dir.y > 0) {
 					Move (0, 1);
+					sprite.transform.eulerAngles = new Vector3 (0, 0, 0);
+				}
 			} else if (Mathf.Abs (dir.x) == Mathf.Abs (dir.y)) {
+				
 				if (Random.value > .5f) {
-					if (dir.y < 0)
+					if (dir.y < 0) {
 						Move (0, -1);
-					if (dir.y > 0)
+						sprite.transform.eulerAngles = new Vector3 (0, 0, 180);
+					}
+					if (dir.y > 0) {
 						Move (0, 1);
+						sprite.transform.eulerAngles = new Vector3 (0, 0, 0);
+					}
 				} else {
-					if (dir.x < 0)
+					if (dir.x < 0) {
 						Move (-1, 0);
-					if (dir.x > 0)
+						sprite.transform.eulerAngles = new Vector3 (0, 0, 90);
+					}
+					if (dir.x > 0) {
 						Move (1, 0);
+						sprite.transform.eulerAngles = new Vector3 (0, 0, -90);
+					}
 				}
 
 

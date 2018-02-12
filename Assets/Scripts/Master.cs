@@ -40,13 +40,14 @@ public class Master : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
+		//DontDestroyOnLoad (this.gameObject);
 
 		if (me == null) {
 			me = this;
 		} else {
 			Destroy (this);
 		}
-			
+						
 		UpdateLists ();	
 		DrawHand ();
 		GetEnemies ();

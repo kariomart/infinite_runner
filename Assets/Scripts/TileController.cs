@@ -53,6 +53,7 @@ public class TileController : MonoBehaviour {
 		if (card != null) {
 			Master.me.AddCard (card);
 			Debug.Log ("added " + card.name + "!");
+			Master.me.cardDescription.text = ("added " + card.name + " to deck!");
 			card = null;
 			display.tileSprite.sprite = defaultTile;
 		}

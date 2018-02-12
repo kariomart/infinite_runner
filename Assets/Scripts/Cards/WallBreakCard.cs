@@ -7,7 +7,7 @@ public class WallBreakCard : Card {
 	// Use this for initialization
 	void Start () {
 
-		cardName = "break";
+		cardName = "passage";
 		cardDescription = "removes a wall adjacent to you";
 		
 	}

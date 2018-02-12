@@ -15,6 +15,8 @@ public class PlayerMovement : MonoBehaviour {
 	public int moves;
 	public int energy = 3;
 
+	public GameObject sprite;
+
 
 
 	// Use this for initialization
@@ -26,6 +28,7 @@ public class PlayerMovement : MonoBehaviour {
 			Destroy (this);
 		}
 
+		sprite = GetComponentInChildren<SpriteRenderer> ().gameObject;
 
 
 	}
@@ -34,6 +37,7 @@ public class PlayerMovement : MonoBehaviour {
 	void Update () {
 
 		DealWithInput ();
+		CheckIfDead ();
 			
 	}
 
@@ -75,10 +79,12 @@ public class PlayerMovement : MonoBehaviour {
 
 			if (Master.me.CheckMovementCard () && energy > 0) {
 				
-				if (MapGenerator.me.CheckTile (new Vector2 (pos.x + 1, pos.y))) {
+				if (MapGenerator.me.CheckIfOnMap (new Vector2 (pos.x + 1, pos.y))) {
+					MapGenerator.me.CheckIfBadTile (new Vector2 (pos.x + 1, pos.y));
 					transform.Translate (cellSize, 0, 0);
 					pos = (Vector2)transform.position;
 					MapGenerator.me.CheckPlayer ();
+					sprite.transform.eulerAngles = new Vector3 (0, 0, -90);
 					Master.me.DiscardMovementCard ();
 					energy--;
 				}
@@ -90,10 +96,12 @@ public class PlayerMovement : MonoBehaviour {
 
 			if (Master.me.CheckMovementCard () && energy > 0) {
 				
-				if (MapGenerator.me.CheckTile (new Vector2 (pos.x - 1, pos.y))) {
+				if (MapGenerator.me.CheckIfOnMap (new Vector2 (pos.x - 1, pos.y))) {
+					MapGenerator.me.CheckIfBadTile (new Vector2 (pos.x - 1, pos.y));
 					transform.Translate (-cellSize, 0, 0);
 					pos = (Vector2)transform.position;
 					MapGenerator.me.CheckPlayer ();
+					sprite.transform.eulerAngles = new Vector3 (0, 0, 90);
 					Master.me.DiscardMovementCard ();
 					energy--;
 				}
@@ -154,8 +162,9 @@ public class PlayerMovement : MonoBehaviour {
 
 		if (Input.GetKeyDown (KeyCode.Alpha5)) {
 
-			if (Master.me.hand.Count > 4) {
-				Master.me.hand [0].GetComponent<CardDisplay> ().CardClicked ();
+			Debug.Log (Master.me.hand.Count);
+			if (Master.me.hand.Count >= 4) {
+				Master.me.hand [4].GetComponent<CardDisplay> ().CardClicked ();
 				Master.me.UpdateLists ();
 				Master.me.UpdateCardPositions ();
 			}
@@ -172,12 +181,25 @@ public class PlayerMovement : MonoBehaviour {
 		transform.position = pos;
 		this.pos = new Vector2 ((int)pos.x, (int)pos.y);
 		MapGenerator.me.CheckPlayer ();
+		sprite.transform.eulerAngles = new Vector3 (0, 0, 0);
 
 	}
 
 	public void MoveForward() {
 
 		transform.Translate (0, cellSize, 0);
+
+	}
+
+	void CheckIfDead() {
+
+		if (health == 0) {
+
+			ScoreController.me.playerY = (int)this.pos.y;
+			ScoreController.me.gold = this.gold;
+			UnityEngine.SceneManagement.SceneManager.LoadScene ("gameover");
+
+		}
 
 	}
 
