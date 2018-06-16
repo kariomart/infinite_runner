@@ -8,10 +8,28 @@ public class TileController : MonoBehaviour {
 	public TileDisplay display;
 	public Vector2 pos;
 	public GameObject card;
+	public Card cardData;
 	public SpriteRenderer sprite;
 	public Sprite defaultTile;
+	
+	public Sprite spr;
 
 	// Use this for initialization
+
+	public void init() {
+
+		if (cardData) {
+			spr = cardData.sprite;
+		}
+
+		if (spr) {
+			
+			Debug.Log(cardData);
+			display.setSprite(spr);
+		}
+	}
+
+
 	void Start () {
 
 		pos = (Vector2) (transform.position);

@@ -11,7 +11,9 @@ public class VisionCard : Card {
 	void Start () {
 
 		cardName = "eye of ra";
-		cardDescription = "grants an area of vision on selected tile"; 
+		cardDescription = "grants an area of vision on selected tile";
+		sprite = (Sprite)Master.me.sprites[4];
+ 
 //		highlightTiles = new Vector2[]{ new Vector2(PlayerMovement.me.pos.x + 1, PlayerMovement.me.pos.y), 
 //							new Vector2(PlayerMovement.me.pos.x - 1, PlayerMovement.me.pos.y), 
 //							new Vector2(PlayerMovement.me.pos.x, PlayerMovement.me.pos.y + 1), 

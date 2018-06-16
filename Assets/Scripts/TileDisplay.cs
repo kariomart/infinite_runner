@@ -8,6 +8,8 @@ public class TileDisplay : MonoBehaviour {
 	public SpriteRenderer cover;
 	public Color coverColor;
 	public SpriteRenderer tileSprite;
+	public SpriteRenderer specialSprite;
+	public Sprite spr;
 
 	// Use this for initialization
 	void Start () {
@@ -44,6 +46,12 @@ public class TileDisplay : MonoBehaviour {
 	void OnMouseExit() {
 
 		//cover.color = coverColor;
+
+	}
+
+	public void setSprite(Sprite spr) {
+
+		this.spr = spr;
 
 	}
 }

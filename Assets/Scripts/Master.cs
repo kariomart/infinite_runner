@@ -8,12 +8,15 @@ public class Master : MonoBehaviour {
 	public static Master me;
 	public PlayerMovement player;
 
+	public Object[] sprites;
+	public Card[] cards;
+
 	public Dictionary<Vector2, GameObject> tiles = new Dictionary<Vector2, GameObject>();
 	public List<TileController> tileControllers = new List<TileController> ();
 	public List<GameObject> deck = new List<GameObject> ();
 	public List<GameObject> hand = new List<GameObject>();
 	public List <GameObject> discard = new List<GameObject> ();
-	public List<GameObject> cards = new List<GameObject>();
+	//public List<GameObject> cards = new List<GameObject>();
 	public List<EnemyController> enemies = new List<EnemyController>();
 	public List<GameObject> hud = new List<GameObject> ();
 	public TileController[,] map;
@@ -41,13 +44,19 @@ public class Master : MonoBehaviour {
 	void Start () {
 
 		//DontDestroyOnLoad (this.gameObject);
-
 		if (me == null) {
 			me = this;
 		} else {
 			Destroy (this);
 		}
+
+//		Card goldC = Instantiate Card();
+		Debug.Log(goldC);
+		Debug.Log(goldC.name);
 						
+		sprites = Resources.LoadAll("CardSprites", typeof(Sprite));
+
+		AddCardData();
 		UpdateLists ();	
 		DrawHand ();
 		GetEnemies ();
@@ -66,7 +75,7 @@ public class Master : MonoBehaviour {
 
 
 		if (Input.GetKeyDown (KeyCode.Escape)) {
-			UnityEngine.SceneManagement.SceneManager.LoadScene ("main");
+			UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
 		}
 
 		UpdateCardDescription ();
@@ -387,6 +396,29 @@ public class Master : MonoBehaviour {
 		}
 
 		hud.Clear ();
+
+	}
+
+	void AddCardData() {
+
+		cards = new Card[6];
+		cards[0] = new GoldCard();
+		cards[1] = new AttackCard();
+		cards[2] = new MovementCard();
+		cards[3] = new TeleportCard();
+		cards[4] = new VisionCard();
+		cards[5] = new WallBreakCard();
+
+	}
+
+	Sprite getSprite(int index) {
+
+		return (Sprite)sprites[index];
+	}
+
+	public Card getCardData(int index) {
+
+		return cards[index];
 
 	}
 		

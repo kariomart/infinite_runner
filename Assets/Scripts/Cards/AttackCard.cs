@@ -9,6 +9,7 @@ public class AttackCard : Card {
 
 		cardName = "khopesh";
 		cardDescription = "attack enemies directly adjacent to you.";
+		sprite = (Sprite)Master.me.sprites[1];
 
 	}
 	

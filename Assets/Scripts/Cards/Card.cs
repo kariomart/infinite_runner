@@ -9,29 +9,32 @@ public class Card : MonoBehaviour {
 	public string cardDescription;
 	public int energy = 1;
 	public Vector2[] highlightTiles;
+	public Sprite sprite;
 
-	// Use this for initialization
+
+	// // Use this for initialization
 	void Start () {
+
 		
 	}
 	
-	// Update is called once per frame
-	void Update () {
+	// // Update is called once per frame
+	// void Update () {
 
 
 
-	}
+	// }
 
-	public virtual void Selected() {
+	// public virtual void Selected() {
 		
-		Master.me.DeselectCards ();
-		Master.me.UpdateCardPositions ();
-		isSelected = true;
-		Master.me.selectedCard = this;
-		Debug.Log (gameObject.name + "was selected");
-		//MapGenerator.me.HighlightTiles (highlightTiles);
-		Master.me.selectedTile = null;
-	}
+	// 	Master.me.DeselectCards ();
+	// 	Master.me.UpdateCardPositions ();
+	// 	isSelected = true;
+	// 	Master.me.selectedCard = this;
+	// 	Debug.Log (gameObject.name + "was selected");
+	// 	//MapGenerator.me.HighlightTiles (highlightTiles);
+	// 	Master.me.selectedTile = null;
+	// }
 
 	public virtual void Played() {
 

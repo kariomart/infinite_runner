@@ -6,19 +6,28 @@ public class GoldCard : Card {
 
 
 	// Use this for initialization
-	void Start () {
+	// void Start () {
+
+	// 	cardName = "scarab";
+	// 	cardDescription = "grants 1 gold";
+	// 	sprite = (Sprite)Master.me.sprites[0];
+		
+	// }
+
+	void Start() {
 
 		cardName = "scarab";
 		cardDescription = "grants 1 gold";
-		
+		//sprite = (Sprite)Master.me.sprites[0];
+
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	// void Update () {
 
-		Played ();
+	// 	Played ();
 		
-	}
+	// }
 
 
 		

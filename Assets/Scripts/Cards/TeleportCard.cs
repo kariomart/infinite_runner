@@ -12,7 +12,8 @@ public class TeleportCard : Card {
 
 		cardName = "feathers";
 		cardDescription = "one time use; move to selected tile";
-		
+		sprite = (Sprite)Master.me.sprites[3];
+
 	}
 	
 	// Update is called once per frame

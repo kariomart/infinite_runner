@@ -10,7 +10,9 @@ public class MovementCard : Card {
 
 		cardName = "river";
 		cardDescription = "move to any adjacent tile";
-		
+		sprite = (Sprite)Master.me.sprites[2];
+
+
 	}
 	
 	// Update is called once per frame

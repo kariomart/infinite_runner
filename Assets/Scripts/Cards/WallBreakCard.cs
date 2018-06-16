@@ -9,7 +9,8 @@ public class WallBreakCard : Card {
 
 		cardName = "passage";
 		cardDescription = "removes a wall adjacent to you";
-		
+		sprite = (Sprite)Master.me.sprites[5];
+
 	}
 	
 	// Update is called once per frame

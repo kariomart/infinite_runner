@@ -73,7 +73,7 @@ public class CardDisplay : MonoBehaviour {
 		Debug.Log ("card clicked");
 		if (PlayerMovement.me.energy > 0) {
 			//Master.me.UpdateCardPositions ();
-			card.Selected ();
+//			card.Selected ();
 			//card.Played ();
 		}
 
